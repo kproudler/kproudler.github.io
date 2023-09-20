@@ -4,8 +4,8 @@
 
 ### Category Name 1 
 
-[Project 1 Title](/sample_page)
-<img src="images/dummy_thumbnail.jpg?raw=true"/>
+[Project 1]
+<a href="https://github.com/kproudler/Data-Analysis/blob/main/notebook.ipynb">The Golden Age of Video Games</a> 
 
 ---
 [Project 2 Title](/pdf/sample_presentation.pdf)
