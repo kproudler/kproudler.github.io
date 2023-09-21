@@ -4,14 +4,16 @@
 
 ### Category Name 1 
 
-[Project 1]
+[World Happiness](/sample_page.md)
+<img src="World Happiness.jpg?raw=true"/>
+
+---
+
+[Golden Age of Video Games](https://github.com/kproudler/Data-Analysis/blob/main/notebook.ipynb)
 <a href="https://github.com/kproudler/Data-Analysis/blob/main/notebook.ipynb">The Golden Age of Video Games</a> 
 
 ---
-[Project 2 Title](/sample_page.md)
-<img src="images/dummy_thumbnail.jpg?raw=true"/>
 
----
 [Project 3 Title](http://example.com/)
 <img src="images/dummy_thumbnail.jpg?raw=true"/>
 
