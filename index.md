@@ -4,7 +4,7 @@
 
 ### Category Name 1 
 
-[World Happiness](/sample_page.md)
+[World Happiness](<img src="World Happiness.jpg?raw=true"/>)
 <img src="World Happiness.jpg?raw=true"/>
 
 ---
