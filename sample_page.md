@@ -3,7 +3,7 @@
 **Project description:** World Happiness. We are looking to identify factors that contribute to a happier life. We will be analyzing data of eastern, and western european countries.
 
 ### 1. Suggest hypotheses about the causes of observed phenomena
-
+<img src="/World Happiness.jpg?raw=true"/>
 Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. 
 
 ```javascript
