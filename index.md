@@ -8,7 +8,7 @@
 <a href="https://github.com/kproudler/Data-Analysis/blob/main/notebook.ipynb">The Golden Age of Video Games</a> 
 
 ---
-[Project 2 Title](/pdf/sample_presentation.pdf)
+[Project 2 Title](/sample_page.md)
 <img src="images/dummy_thumbnail.jpg?raw=true"/>
 
 ---
