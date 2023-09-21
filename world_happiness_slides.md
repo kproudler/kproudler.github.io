@@ -1,4 +1,4 @@
-## This can be your internal website page / project page
+
 
 **Project description:** World Happiness. We are looking to identify factors that contribute to a happier life. We will be analyzing data of eastern, and western european countries.
 
