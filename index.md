@@ -4,7 +4,7 @@
 
 ### Category Name 1 
 
-[World Happiness](<img src="World Happiness.jpg?raw=true"/>)
+[World Happiness](/world_happiness_slides.md)
 <img src="World Happiness.jpg?raw=true"/>
 
 ---
