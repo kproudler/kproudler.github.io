@@ -7,6 +7,8 @@
 <img src="/World Happiness (1).jpg?raw=true"/>
 <img src="/World Happiness (2).jpg?raw=true"/>
 <img src="/World Happiness (3).jpg?raw=true"/>
+Began by creating a ‘Happiness Score’ heat map for each European country where the number within each country represents the overall score and the colours represent how high or how low the score is on a scale. Darker blue, the higher the score is, and the darker the red the lower the score is.
+The next step is to identify the demographic and economic differences between the higher and lower countries to isolate the correlated features between them
 <img src="/World Happiness (4).jpg?raw=true"/>
 <img src="/World Happiness (5).jpg?raw=true"/>
 <img src="/World Happiness (6).jpg?raw=true"/>
