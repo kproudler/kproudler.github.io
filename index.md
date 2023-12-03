@@ -9,7 +9,7 @@
 
 ---
 
-[Golden Age of Video Games](https://github.com/kproudler/Data-Analysis/blob/main/notebook.ipynb)
+[Golden Age of Video Games](https://github.com/kproudler/kproudler.github.io/blob/main/golden_age_videogames.html)
 
 ---
 
