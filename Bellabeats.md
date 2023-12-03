@@ -1,4 +1,4 @@
-Bellabeat Case Study
+Bellabeat Case Study - Work in Progress
 ================
 
 ## About
