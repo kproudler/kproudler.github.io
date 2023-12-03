@@ -4,6 +4,11 @@
 
 ### Data Analysis Projects
 
+[Bellabeats Product Analysis Case Study](/Bellabeats.Rmd)
+<a href="https://kproudler.github.io/Bellabeats.html"><img src=""/></a>
+
+---
+
 [World Happiness](/world_happiness_slides.md)
 <a href="https://kproudler.github.io/world_happiness_slides.html"><img src="World Happiness.jpg?raw=true"/></a>
 
