@@ -1,4 +1,4 @@
-Bellabeat Case Study - Work in Progress
+Bellabeat Case Study
 ================
 
 ## About
@@ -86,5 +86,72 @@ library(data.table)
 library(janitor)
 library(skimr)
 ```
+
+Loading all CSV files with health data into a list.
+
+``` r
+file_list <- list.files(path = "Fitabase Data 4.12.16-5.12.16/", full.names = TRUE)
+datasets <- lapply(file_list, fread)
+names(datasets) <- gsub('.{11}$', '', basename(file_list))
+```
+
+Each file had been appended with “\_merged.csv”, which has been removed
+to ease referencing.
+
+In order to begin analyzing the data, I need to be able to understand
+what I’m working with. I will be creating a summary of the data files
+showing the number of columns and rows, how many N/A fields, distinct
+IDs, and duplicates are found in each.
+
+``` r
+ds_summary <- data.frame(
+  sapply(datasets, nrow),
+  sapply(datasets, ncol),
+  sapply(datasets, FUN = function(x) {sum(is.na(x))}),
+  sapply(datasets, FUN = function(x) {n_distinct(x[[1]])}),
+  sapply(datasets, FUN = function(x) {sum(duplicated(x))})
+)
+names(ds_summary) <- c("# Rows", "# Columns", "# NA", "# Distinct ID", "# Duplicated")
+
+ds_summary
+```
+
+    ##                          # Rows # Columns # NA # Distinct ID # Duplicated
+    ## dailyActivity               940        15    0            33            0
+    ## dailyCalories               940         3    0            33            0
+    ## dailyIntensities            940        10    0            33            0
+    ## dailySteps                  940         3    0            33            0
+    ## heartrate_seconds       2483658         3    0            14            0
+    ## hourlyCalories            22099         3    0            33            0
+    ## hourlyIntensities         22099         4    0            33            0
+    ## hourlySteps               22099         3    0            33            0
+    ## minuteCaloriesNarrow    1325580         3    0            33            0
+    ## minuteCaloriesWide        21645        62    0            33            0
+    ## minuteIntensitiesNarrow 1325580         3    0            33            0
+    ## minuteIntensitiesWide     21645        62    0            33            0
+    ## minuteMETsNarrow        1325580         3    0            33            0
+    ## minuteSleep              188521         4    0            24          543
+    ## minuteStepsNarrow       1325580         3    0            33            0
+    ## minuteStepsWide           21645        62    0            33            0
+    ## sleepDay                    413         5    0            24            3
+    ## weightLogInfo                67         8   65             8            0
+
+-The summary indicates that most data sets have 33 Distinct IDs, other
+than *minuteSleep*, *heartrate_seconds*, *sleepDay*, and
+*weightLogInfo*.
+
+-There are also 2 data sets that have duplicated data: *minuteSleep*,
+and *sleepDay*.
+
+-weightLogInfo is showing 65 NAs in the dataset. Upon further
+inspection, the NAs were all located within the column *Fat*. As there
+are a total of 67 rows in this data set, this column will not be useful
+with that much missing data.
+
+#### Next Steps
+
+-Remove duplicates from *minuteSleep* and *sleepDay*
+
+-Drop the *Fat* column from *weightLogInfo*
 
 ## Including Plots
