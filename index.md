@@ -4,7 +4,7 @@
 
 ### Data Analysis Projects
 
-[Bellabeats Product Analysis Case Study](/Bellabeats.Rmd)
+[Bellabeats Product Analysis Case Study](/Bellabeats.md)
 <a href="https://kproudler.github.io/Bellabeats.html"><img src=""/></a>
 
 ---
