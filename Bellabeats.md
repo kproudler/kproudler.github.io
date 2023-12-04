@@ -206,8 +206,8 @@ ds_summary
 ggplot(datasets$dailyActivity, mapping = aes(x = Calories, y = TotalSteps, color = Calories)) +
   geom_point() +
   geom_smooth(method = "loess") +
-  labs(title = "Total Steps vs Calories Burn", x = "Calories Burn") +
-  scale_color_gradient(low = "#501e7d", high = "#fd8f76")
+  labs(title = "Total Steps vs Calories Burned", x = "Calories Burned") +
+  scale_color_gradient(low = "#3182bd", high = "#fc8d59")
 ```
 
     ## Warning: The following aesthetics were dropped during statistical transformation: colour
