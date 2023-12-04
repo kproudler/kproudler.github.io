@@ -1,4 +1,4 @@
-Bellabeat Case Study
+Bellabeat Case Study - Work in Progress
 ================
 
 ## About
@@ -143,10 +143,20 @@ than *minuteSleep*, *heartrate_seconds*, *sleepDay*, and
 -There are also 2 data sets that have duplicated data: *minuteSleep*,
 and *sleepDay*.
 
--weightLogInfo is showing 65 NAs in the dataset. Upon further
-inspection, the NAs were all located within the column *Fat*. As there
-are a total of 67 rows in this data set, this column will not be useful
-with that much missing data.
+-weightLogInfo is showing 65 NAs in the dataset.
+
+``` r
+sapply(datasets$weightLogInfo, FUN = function(x) {sum(is.na(x))})
+```
+
+    ##             Id           Date       WeightKg   WeightPounds            Fat 
+    ##              0              0              0              0             65 
+    ##            BMI IsManualReport          LogId 
+    ##              0              0              0
+
+-Upon further inspection, the NAs were all located within the column
+*Fat*. As there are a total of 67 rows in this data set, this column
+will not be useful with that much missing data.
 
 #### Next Steps
 
@@ -154,4 +164,56 @@ with that much missing data.
 
 -Drop the *Fat* column from *weightLogInfo*
 
-## Including Plots
+``` r
+datasets$weightLogInfo <- select(datasets$weightLogInfo, -Fat)
+datasets$sleepDay <- unique(datasets$sleepDay)
+datasets$minuteSleep <- unique(datasets$minuteSleep)
+
+ds_summary <- data.frame(
+  sapply(datasets, nrow),
+  sapply(datasets, ncol),
+  sapply(datasets, FUN = function(x) {sum(is.na(x))}),
+  sapply(datasets, FUN = function(x) {n_distinct(x[[1]])}),
+  sapply(datasets, FUN = function(x) {sum(duplicated(x))})
+)
+names(ds_summary) <- c("# Rows", "# Columns", "# NA", "# Distinct ID", "# Duplicated")
+ds_summary
+```
+
+    ##                          # Rows # Columns # NA # Distinct ID # Duplicated
+    ## dailyActivity               940        15    0            33            0
+    ## dailyCalories               940         3    0            33            0
+    ## dailyIntensities            940        10    0            33            0
+    ## dailySteps                  940         3    0            33            0
+    ## heartrate_seconds       2483658         3    0            14            0
+    ## hourlyCalories            22099         3    0            33            0
+    ## hourlyIntensities         22099         4    0            33            0
+    ## hourlySteps               22099         3    0            33            0
+    ## minuteCaloriesNarrow    1325580         3    0            33            0
+    ## minuteCaloriesWide        21645        62    0            33            0
+    ## minuteIntensitiesNarrow 1325580         3    0            33            0
+    ## minuteIntensitiesWide     21645        62    0            33            0
+    ## minuteMETsNarrow        1325580         3    0            33            0
+    ## minuteSleep              187978         4    0            24            0
+    ## minuteStepsNarrow       1325580         3    0            33            0
+    ## minuteStepsWide           21645        62    0            33            0
+    ## sleepDay                    410         5    0            24            0
+    ## weightLogInfo                67         7    0             8            0
+
+## Analyzing the Data
+
+``` r
+ggplot(datasets$dailyActivity, mapping = aes(x = Calories, y = TotalSteps, color = Calories)) +
+  geom_point() +
+  geom_smooth(method = "loess") +
+  labs(title = "Total Steps vs Calories Burn", x = "Calories Burn") +
+  scale_color_gradient(low = "#501e7d", high = "#fd8f76")
+```
+
+    ## Warning: The following aesthetics were dropped during statistical transformation: colour
+    ## ℹ This can happen when ggplot fails to infer the correct grouping structure in
+    ##   the data.
+    ## ℹ Did you forget to specify a `group` aesthetic or to convert a numerical
+    ##   variable into a factor?
+
+![](Bellabeat-Case-Study-Github_files/figure-gfm/unnamed-chunk-6-1.png)<!-- -->
