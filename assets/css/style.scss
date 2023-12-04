@@ -13,3 +13,8 @@ section {
   float:right;
   padding-bottom:50px;
 }
+
+h2 > img {
+  max-height: 500px;
+  max-width: 500px;
+}
