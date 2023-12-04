@@ -4,6 +4,7 @@
 
 ### Data Analysis Projects
 [Test Case Study](/Bellabeat-Case-Study.html)
+<br>
 [Bellabeats Product Analysis Case Study](/Bellabeats.md)
 <br>
 <a href="https://kproudler.github.io/Bellabeats.html"><img src="dataset-cover.png"/></a>
