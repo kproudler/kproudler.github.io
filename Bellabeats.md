@@ -210,10 +210,4 @@ ggplot(datasets$dailyActivity, mapping = aes(x = Calories, y = TotalSteps, color
   scale_color_gradient(low = "#3182bd", high = "#fc8d59")
 ```
 
-    ## Warning: The following aesthetics were dropped during statistical transformation: colour
-    ## ℹ This can happen when ggplot fails to infer the correct grouping structure in
-    ##   the data.
-    ## ℹ Did you forget to specify a `group` aesthetic or to convert a numerical
-    ##   variable into a factor?
-
 ![](Bellabeat-Case-Study-Github_files/figure-gfm/unnamed-chunk-6-1.png)<!-- -->
