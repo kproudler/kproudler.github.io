@@ -5,7 +5,7 @@
 ### Data Analysis Projects
 [Marketing/Advertising Insights (Python)](/Linear-Regression.html)
 <br>
-<a href="https://kproudler.github.io/Linear-Regression.html"><img src="marketing_insights_picture.png"/></a>
+<a href="https://kproudler.github.io/Linear-Regression.html"><img src="marketing_insights_picture.jpg"/></a>
 
 ---
 
