@@ -3,6 +3,12 @@
 ---
 
 ### Data Analysis Projects
+[Marketing/Advertising Insights](/Linear-Regression.html)
+<br>
+<a href="https://kproudler.github.io/Linear-Regression.html"><img src="dataset-cover.png"/></a>
+
+---
+
 [Bellabeats Product Analysis Case Study (R)](/Bellabeat-Case-Study.html)
 <br>
 <a href="https://kproudler.github.io/Bellabeat-Case-Study.html"><img src="dataset-cover.png"/></a>
