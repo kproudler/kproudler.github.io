@@ -3,6 +3,11 @@
 ---
 
 ### Data Analysis Projects
+
+[TikTok Data Analysis Project (Python)](/TikTok%20project.html)
+<br>
+<a href="https://github.com/kproudler/kproudler.github.io/blob/main/TikTok%20project.html"><img src="marketing_insights_picture.jpg" width="300" height="150"/></a>
+
 [Marketing/Advertising Insights (Python)](/Linear-Regression.html)
 <br>
 <a href="https://kproudler.github.io/Linear-Regression.html"><img src="marketing_insights_picture.jpg" width="300" height="150"/></a>
