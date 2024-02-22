@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<!-- saved from url=(0054)https://kproudler.github.io/golden_age_videogames.html -->
+<html lang="en-US"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>The ten best-selling video games | Kevin Proudler</title>
+<meta name="generator" content="Jekyll v3.9.5">
+<meta property="og:title" content="The ten best-selling video games">
+<meta property="og:locale" content="en_US">
+<link rel="canonical" href="https://kproudler.github.io/golden_age_videogames.html">
+<meta property="og:url" content="https://kproudler.github.io/golden_age_videogames.html">
+<meta property="og:site_name" content="Kevin Proudler">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="The ten best-selling video games">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","headline":"The ten best-selling video games","url":"https://kproudler.github.io/golden_age_videogames.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <style class="anchorjs"></style><link rel="stylesheet" href="./golden_age_videogames_files/style.css">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body data-new-gr-c-s-check-loaded="14.1155.0" data-gr-ext-installed="">
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="https://kproudler.github.io/">Kevin Proudler</a></h1>
+      
+
+      <h2 id="1-the-ten-best-selling-video-games">1. The ten best-selling video games<a class="anchorjs-link " href="https://kproudler.github.io/golden_age_videogames.html#1-the-ten-best-selling-video-games" aria-label="Anchor" data-anchorjs-icon="" style="font: 1em / 1 anchorjs-icons; padding-left: 0.375em;"></a></h2>
+<p><a href="https://github.com/kproudler/Data-Analysis/blob/main/notebook.ipynb">Github Link</a></p>
+<p><img src="./golden_age_videogames_files/video_game.jpg" alt="A video game player choosing a game to play on Nintendo Switch." width="400"></p>
+<p>Photo by <a href="https://unsplash.com/@retromoon">Dan Schleusser</a> on <a href="https://unsplash.com/">Unsplash</a>.</p>
+<p>Video games are big business: the global gaming market is projected to be worth more than $300 billion by 2027 according to <a href="https://www.mordorintelligence.com/industry-reports/global-gaming-market">Mordor Intelligence</a>. With so much money at stake, the major game publishers are hugely incentivized to create the next big hit. But are games getting better, or has the golden age of video games already passed?</p>
+<p>In this project, we'll explore the top 400 best-selling video games created between 1977 and 2020. We'll compare a dataset on game sales with critic and user reviews to determine whether or not video games have improved as the gaming market has grown.</p>
+<p>Our database contains two tables. We've limited each table to 400 rows for this project, but you can find the complete dataset with over 13,000 games on <a href="https://www.kaggle.com/holmjason2/videogamedata">Kaggle</a>. </p>
+<h3 id="game_sales"><code>game_sales</code><a class="anchorjs-link " href="https://kproudler.github.io/golden_age_videogames.html#game_sales" aria-label="Anchor" data-anchorjs-icon="" style="font: 1em / 1 anchorjs-icons; padding-left: 0.375em;"></a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">column</th>
+<th>type</th>
+<th>meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;"><code>game</code></td>
+<td>varchar</td>
+<td>Name of the video game</td>
+</tr>
+<tr>
+<td style="text-align:left;"><code>platform</code></td>
+<td>varchar</td>
+<td>Gaming platform</td>
+</tr>
+<tr>
+<td style="text-align:left;"><code>publisher</code></td>
+<td>varchar</td>
+<td>Game publisher</td>
+</tr>
+<tr>
+<td style="text-align:left;"><code>developer</code></td>
+<td>varchar</td>
+<td>Game developer</td>
+</tr>
+<tr>
+<td style="text-align:left;"><code>games_sold</code></td>
+<td>float</td>
+<td>Number of copies sold (millions)</td>
+</tr>
+<tr>
+<td style="text-align:left;"><code>year</code></td>
+<td>int</td>
+<td>Release year</td>
+</tr>
+</tbody>
+</table>
+<h3 id="reviews"><code>reviews</code><a class="anchorjs-link " href="https://kproudler.github.io/golden_age_videogames.html#reviews" aria-label="Anchor" data-anchorjs-icon="" style="font: 1em / 1 anchorjs-icons; padding-left: 0.375em;"></a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">column</th>
+<th>type</th>
+<th>meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;"><code>game</code></td>
+<td>varchar</td>
+<td>Name of the video game</td>
+</tr>
+<tr>
+<td style="text-align:left;"><code>critic_score</code></td>
+<td>float</td>
+<td>Critic score according to Metacritic</td>
+</tr>
+<tr>
+<td style="text-align:left;"><code>user_score</code></td>
+<td>float</td>
+<td>User score according to Metacritic</td>
+</tr>
+</tbody>
+</table>
+<p>Let's begin by looking at some of the top selling video games of all time!</p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">%%</span><span class="k">sql</span>
+<span class="n">postgresql</span><span class="p">:</span><span class="o">///</span><span class="n">games</span>
+
+<span class="o">#</span> <span class="c1">-- Select all information for the top ten best-selling games</span>
+<span class="o">#</span> <span class="c1">-- Order the results from best-selling game down to tenth best-selling</span>
+<span class="k">SELECT</span> <span class="o">*</span>
+<span class="k">FROM</span> <span class="n">game_sales</span>
+<span class="k">ORDER</span> <span class="k">BY</span> <span class="n">games_sold</span> <span class="k">DESC</span>
+<span class="k">LIMIT</span> <span class="mi">10</span><span class="p">;</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Connection info needed in SQLAlchemy format, example:
+               postgresql://username:password@hostname/dbname
+               or an existing connection: dict_keys([])
+No module named 'psycopg2'
+Connection info needed in SQLAlchemy format, example:
+               postgresql://username:password@hostname/dbname
+               or an existing connection: dict_keys([])
+</code></pre></div></div>
+
+<h2 id="2-missing-review-scores">2. Missing review scores<a class="anchorjs-link " href="https://kproudler.github.io/golden_age_videogames.html#2-missing-review-scores" aria-label="Anchor" data-anchorjs-icon="" style="font: 1em / 1 anchorjs-icons; padding-left: 0.375em;"></a></h2>
+<p>Wow, the best-selling video games were released between 1985 to 2017! That's quite a range; we'll have to use data from the <code>reviews</code> table to gain more insight on the best years for video games. </p>
+<p>First, it's important to explore the limitations of our database. One big shortcoming is that there is not any <code>reviews</code> data for some of the games on the <code>game_sales</code> table. </p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">%%</span><span class="k">sql</span> 
+
+<span class="c1">-- Join games_sales and reviews</span>
+<span class="c1">-- Select a count of the number of games where both critic_score and user_score are null</span>
+<span class="k">SELECT</span> <span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span>
+<span class="k">FROM</span> <span class="n">game_sales</span> <span class="k">AS</span> <span class="k">g</span>
+<span class="k">LEFT</span> <span class="k">JOIN</span> <span class="n">reviews</span> <span class="k">AS</span> <span class="n">r</span>
+<span class="k">ON</span> <span class="n">r</span><span class="p">.</span><span class="n">game</span> <span class="o">=</span> <span class="k">g</span><span class="p">.</span><span class="n">game</span>
+<span class="k">WHERE</span> <span class="n">critic_score</span> <span class="k">IS</span> <span class="k">NULL</span>
+<span class="k">AND</span> <span class="n">user_score</span> <span class="k">IS</span> <span class="k">NULL</span><span class="p">;</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> * postgresql:///games
+1 rows affected.
+</code></pre></div></div>
+
+<table>
+    <thead>
+        <tr>
+            <th>count</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>31</td>
+        </tr>
+    </tbody>
+</table>
+
+<h2 id="3-years-that-video-game-critics-loved">3. Years that video game critics loved<a class="anchorjs-link " href="https://kproudler.github.io/golden_age_videogames.html#3-years-that-video-game-critics-loved" aria-label="Anchor" data-anchorjs-icon="" style="font: 1em / 1 anchorjs-icons; padding-left: 0.375em;"></a></h2>
+<p>It looks like a little less than ten percent of the games on the <code>game_sales</code> table don't have any reviews data. That's a small enough percentage that we can continue our exploration, but the missing reviews data is a good thing to keep in mind as we move on to evaluating results from more sophisticated queries. </p>
+<p>There are lots of ways to measure the best years for video games! Let's start with what the critics think. </p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">%%</span><span class="k">sql</span>
+
+<span class="c1">-- Select release year and average critic score for each year, rounded and aliased</span>
+<span class="c1">-- Join the game_sales and reviews tables</span>
+<span class="c1">-- Group by release year</span>
+<span class="c1">-- Order the data from highest to lowest avg_critic_score and limit to 10 results</span>
+<span class="k">SELECT</span> <span class="nb">year</span><span class="p">,</span> <span class="n">ROUND</span><span class="p">(</span><span class="k">AVG</span><span class="p">(</span><span class="n">critic_score</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span> <span class="k">AS</span> <span class="n">avg_critic_score</span>
+<span class="k">FROM</span> <span class="n">game_sales</span> <span class="k">AS</span> <span class="k">g</span>
+<span class="k">LEFT</span> <span class="k">JOIN</span> <span class="n">reviews</span> <span class="k">AS</span> <span class="n">r</span>
+<span class="k">ON</span> <span class="n">r</span><span class="p">.</span><span class="n">game</span> <span class="o">=</span> <span class="k">g</span><span class="p">.</span><span class="n">game</span>
+<span class="k">GROUP</span> <span class="k">BY</span> <span class="nb">year</span>
+<span class="k">ORDER</span> <span class="k">BY</span> <span class="n">avg_critic_score</span> <span class="k">DESC</span>
+<span class="k">LIMIT</span> <span class="mi">10</span><span class="p">;</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> * postgresql:///games
+10 rows affected.
+</code></pre></div></div>
+
+<table>
+    <thead>
+        <tr>
+            <th>year</th>
+            <th>avg_critic_score</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1990</td>
+            <td>9.80</td>
+        </tr>
+        <tr>
+            <td>1992</td>
+            <td>9.67</td>
+        </tr>
+        <tr>
+            <td>1998</td>
+            <td>9.32</td>
+        </tr>
+        <tr>
+            <td>2020</td>
+            <td>9.20</td>
+        </tr>
+        <tr>
+            <td>1993</td>
+            <td>9.10</td>
+        </tr>
+        <tr>
+            <td>1995</td>
+            <td>9.07</td>
+        </tr>
+        <tr>
+            <td>2004</td>
+            <td>9.03</td>
+        </tr>
+        <tr>
+            <td>1982</td>
+            <td>9.00</td>
+        </tr>
+        <tr>
+            <td>2002</td>
+            <td>8.99</td>
+        </tr>
+        <tr>
+            <td>1999</td>
+            <td>8.93</td>
+        </tr>
+    </tbody>
+</table>
+
+<h2 id="4-was-1982-really-that-great">4. Was 1982 really that great?<a class="anchorjs-link " href="https://kproudler.github.io/golden_age_videogames.html#4-was-1982-really-that-great" aria-label="Anchor" data-anchorjs-icon="" style="font: 1em / 1 anchorjs-icons; padding-left: 0.375em;"></a></h2>
+<p>The range of great years according to critic reviews goes from 1982 until 2020: we are no closer to finding the golden age of video games! </p>
+<p>Hang on, though. Some of those <code>avg_critic_score</code> values look like suspiciously round numbers for averages. The value for 1982 looks especially fishy. Maybe there weren't a lot of video games in our dataset that were released in certain years. </p>
+<p>Let's update our query and find out whether 1982 really was such a great year for video games.</p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">%%</span><span class="k">sql</span> 
+
+<span class="c1">-- Paste your query from the previous task; update it to add a count of games released in each year called num_games</span>
+<span class="c1">-- Update the query so that it only returns years that have more than four reviewed games</span>
+<span class="k">SELECT</span> <span class="k">g</span><span class="p">.</span><span class="nb">year</span><span class="p">,</span> <span class="n">ROUND</span><span class="p">(</span><span class="k">AVG</span><span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="n">critic_score</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span> <span class="k">AS</span> <span class="n">avg_critic_score</span><span class="p">,</span> <span class="k">COUNT</span><span class="p">(</span><span class="k">g</span><span class="p">.</span><span class="n">game</span><span class="p">)</span> <span class="k">AS</span> <span class="n">num_games</span>
+<span class="k">FROM</span> <span class="n">game_sales</span> <span class="k">AS</span> <span class="k">g</span>
+<span class="k">INNER</span> <span class="k">JOIN</span> <span class="n">reviews</span> <span class="k">AS</span> <span class="n">r</span>
+<span class="k">ON</span> <span class="n">r</span><span class="p">.</span><span class="n">game</span> <span class="o">=</span> <span class="k">g</span><span class="p">.</span><span class="n">game</span>
+<span class="k">GROUP</span> <span class="k">BY</span> <span class="nb">year</span>
+<span class="k">HAVING</span> <span class="k">COUNT</span><span class="p">(</span><span class="k">g</span><span class="p">.</span><span class="n">game</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">4</span>
+<span class="k">ORDER</span> <span class="k">BY</span> <span class="n">avg_critic_score</span> <span class="k">DESC</span>
+<span class="k">LIMIT</span> <span class="mi">10</span><span class="p">;</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> * postgresql:///games
+10 rows affected.
+</code></pre></div></div>
+
+<table>
+    <thead>
+        <tr>
+            <th>year</th>
+            <th>avg_critic_score</th>
+            <th>num_games</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1998</td>
+            <td>9.32</td>
+            <td>10</td>
+        </tr>
+        <tr>
+            <td>2004</td>
+            <td>9.03</td>
+            <td>11</td>
+        </tr>
+        <tr>
+            <td>2002</td>
+            <td>8.99</td>
+            <td>9</td>
+        </tr>
+        <tr>
+            <td>1999</td>
+            <td>8.93</td>
+            <td>11</td>
+        </tr>
+        <tr>
+            <td>2001</td>
+            <td>8.82</td>
+            <td>13</td>
+        </tr>
+        <tr>
+            <td>2011</td>
+            <td>8.76</td>
+            <td>26</td>
+        </tr>
+        <tr>
+            <td>2016</td>
+            <td>8.67</td>
+            <td>13</td>
+        </tr>
+        <tr>
+            <td>2013</td>
+            <td>8.66</td>
+            <td>18</td>
+        </tr>
+        <tr>
+            <td>2008</td>
+            <td>8.63</td>
+            <td>20</td>
+        </tr>
+        <tr>
+            <td>2012</td>
+            <td>8.62</td>
+            <td>12</td>
+        </tr>
+    </tbody>
+</table>
+
+<h2 id="5-years-that-dropped-off-the-critics-favorites-list">5. Years that dropped off the critics’ favorites list<a class="anchorjs-link " href="https://kproudler.github.io/golden_age_videogames.html#5-years-that-dropped-off-the-critics-favorites-list" aria-label="Anchor" data-anchorjs-icon="" style="font: 1em / 1 anchorjs-icons; padding-left: 0.375em;"></a></h2>
+<p>That looks better! The <code>num_games</code> column convinces us that our new list of the critics' top games reflects years that had quite a few well-reviewed games rather than just one or two hits. But which years dropped off the list due to having four or fewer reviewed games? Let's identify them so that someday we can track down more game reviews for those years and determine whether they might rightfully be considered as excellent years for video game releases!</p>
+<p>It's time to brush off your set theory skills. To get started, we've created tables with the results of our previous two queries:</p>
+<h3 id="top_critic_years"><code>top_critic_years</code><a class="anchorjs-link " href="https://kproudler.github.io/golden_age_videogames.html#top_critic_years" aria-label="Anchor" data-anchorjs-icon="" style="font: 1em / 1 anchorjs-icons; padding-left: 0.375em;"></a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">column</th>
+<th>type</th>
+<th>meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;"><code>year</code></td>
+<td>int</td>
+<td>Year of video game release</td>
+</tr>
+<tr>
+<td style="text-align:left;"><code>avg_critic_score</code></td>
+<td>float</td>
+<td>Average of all critic scores for games released in that year</td>
+</tr>
+</tbody>
+</table>
+<h3 id="top_critic_years_more_than_four_games"><code>top_critic_years_more_than_four_games</code><a class="anchorjs-link " href="https://kproudler.github.io/golden_age_videogames.html#top_critic_years_more_than_four_games" aria-label="Anchor" data-anchorjs-icon="" style="font: 1em / 1 anchorjs-icons; padding-left: 0.375em;"></a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">column</th>
+<th>type</th>
+<th>meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;"><code>year</code></td>
+<td>int</td>
+<td>Year of video game release</td>
+</tr>
+<tr>
+<td style="text-align:left;"><code>num_games</code></td>
+<td>int</td>
+<td>Count of the number of video games released in that year</td>
+</tr>
+<tr>
+<td style="text-align:left;"><code>avg_critic_score</code></td>
+<td>float</td>
+<td>Average of all critic scores for games released in that year</td>
+</tr>
+</tbody>
+</table>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">%%</span><span class="k">sql</span> 
+
+<span class="c1">-- Select the year and avg_critic_score for those years that dropped off the list of critic favorites </span>
+<span class="c1">-- Order the results from highest to lowest avg_critic_score</span>
+<span class="k">SELECT</span> <span class="nb">year</span><span class="p">,</span> <span class="n">avg_critic_score</span>
+<span class="k">FROM</span> <span class="n">top_critic_years</span>
+<span class="k">EXCEPT</span>
+<span class="k">SELECT</span> <span class="nb">year</span><span class="p">,</span> <span class="n">avg_critic_score</span>
+<span class="k">FROM</span> <span class="n">top_critic_years_more_than_four_games</span>
+<span class="k">ORDER</span> <span class="k">BY</span> <span class="n">avg_critic_score</span> <span class="k">DESC</span><span class="p">;</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> * postgresql:///games
+6 rows affected.
+</code></pre></div></div>
+
+<table>
+    <thead>
+        <tr>
+            <th>year</th>
+            <th>avg_critic_score</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1990</td>
+            <td>9.80</td>
+        </tr>
+        <tr>
+            <td>1992</td>
+            <td>9.67</td>
+        </tr>
+        <tr>
+            <td>2020</td>
+            <td>9.20</td>
+        </tr>
+        <tr>
+            <td>1993</td>
+            <td>9.10</td>
+        </tr>
+        <tr>
+            <td>1995</td>
+            <td>9.07</td>
+        </tr>
+        <tr>
+            <td>1982</td>
+            <td>9.00</td>
+        </tr>
+    </tbody>
+</table>
+
+<h2 id="6-years-video-game-players-loved">6. Years video game players loved<a class="anchorjs-link " href="https://kproudler.github.io/golden_age_videogames.html#6-years-video-game-players-loved" aria-label="Anchor" data-anchorjs-icon="" style="font: 1em / 1 anchorjs-icons; padding-left: 0.375em;"></a></h2>
+<p>Based on our work in the task above, it looks like the early 1990s might merit consideration as the golden age of video games based on <code>critic_score</code> alone, but we'd need to gather more games and reviews data to do further analysis. </p>
+<p>Let's move on to looking at the opinions of another important group of people: players! To begin, let's create a query very similar to the one we used in Task Four, except this one will look at <code>user_score</code> averages by year rather than <code>critic_score</code> averages.</p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">%%</span><span class="k">sql</span> 
+
+<span class="c1">-- Select year, an average of user_score, and a count of games released in a given year, aliased and rounded</span>
+<span class="c1">-- Include only years with more than four reviewed games; group data by year</span>
+<span class="c1">-- Order data by avg_user_score, and limit to ten results</span>
+<span class="k">SELECT</span> <span class="nb">year</span><span class="p">,</span> <span class="n">ROUND</span><span class="p">(</span><span class="k">AVG</span><span class="p">(</span><span class="n">user_score</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span> <span class="k">AS</span> <span class="n">avg_user_score</span><span class="p">,</span> <span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="k">AS</span> <span class="n">num_games</span>
+<span class="k">FROM</span> <span class="n">game_sales</span> <span class="k">AS</span> <span class="k">g</span>
+<span class="k">INNER</span> <span class="k">JOIN</span> <span class="n">reviews</span> <span class="k">AS</span> <span class="n">r</span>
+<span class="k">ON</span> <span class="n">r</span><span class="p">.</span><span class="n">game</span> <span class="o">=</span> <span class="k">g</span><span class="p">.</span><span class="n">game</span>
+<span class="k">GROUP</span> <span class="k">BY</span> <span class="nb">year</span>
+<span class="k">HAVING</span> <span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">4</span>
+<span class="k">ORDER</span> <span class="k">BY</span> <span class="n">avg_user_score</span> <span class="k">DESC</span>
+<span class="k">LIMIT</span> <span class="mi">10</span><span class="p">;</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> * postgresql:///games
+10 rows affected.
+</code></pre></div></div>
+
+<table>
+    <thead>
+        <tr>
+            <th>year</th>
+            <th>avg_user_score</th>
+            <th>num_games</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1997</td>
+            <td>9.50</td>
+            <td>8</td>
+        </tr>
+        <tr>
+            <td>1998</td>
+            <td>9.40</td>
+            <td>10</td>
+        </tr>
+        <tr>
+            <td>2010</td>
+            <td>9.24</td>
+            <td>23</td>
+        </tr>
+        <tr>
+            <td>2009</td>
+            <td>9.18</td>
+            <td>20</td>
+        </tr>
+        <tr>
+            <td>2008</td>
+            <td>9.03</td>
+            <td>20</td>
+        </tr>
+        <tr>
+            <td>1996</td>
+            <td>9.00</td>
+            <td>5</td>
+        </tr>
+        <tr>
+            <td>2005</td>
+            <td>8.95</td>
+            <td>13</td>
+        </tr>
+        <tr>
+            <td>2006</td>
+            <td>8.95</td>
+            <td>16</td>
+        </tr>
+        <tr>
+            <td>2000</td>
+            <td>8.80</td>
+            <td>8</td>
+        </tr>
+        <tr>
+            <td>1999</td>
+            <td>8.80</td>
+            <td>11</td>
+        </tr>
+    </tbody>
+</table>
+
+<h2 id="7-years-that-both-players-and-critics-loved">7. Years that both players and critics loved<a class="anchorjs-link " href="https://kproudler.github.io/golden_age_videogames.html#7-years-that-both-players-and-critics-loved" aria-label="Anchor" data-anchorjs-icon="" style="font: 1em / 1 anchorjs-icons; padding-left: 0.375em;"></a></h2>
+<p>Alright, we've got a list of the top ten years according to both critic reviews and user reviews. Are there any years that showed up on both tables? If so, those years would certainly be excellent ones!</p>
+<p>Recall that we have access to the <code>top_critic_years_more_than_four_games</code> table, which stores the results of our top critic years query from Task 4:</p>
+<h3 id="top_critic_years_more_than_four_games"><code>top_critic_years_more_than_four_games</code><a class="anchorjs-link " href="https://kproudler.github.io/golden_age_videogames.html#top_critic_years_more_than_four_games" aria-label="Anchor" data-anchorjs-icon="" style="font: 1em / 1 anchorjs-icons; padding-left: 0.375em;"></a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">column</th>
+<th>type</th>
+<th>meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;"><code>year</code></td>
+<td>int</td>
+<td>Year of video game release</td>
+</tr>
+<tr>
+<td style="text-align:left;"><code>num_games</code></td>
+<td>int</td>
+<td>Count of the number of video games released in that year</td>
+</tr>
+<tr>
+<td style="text-align:left;"><code>avg_critic_score</code></td>
+<td>float</td>
+<td>Average of all critic scores for games released in that year</td>
+</tr>
+</tbody>
+</table>
+<p>We've also saved the results of our top user years query from the previous task into a table:</p>
+<h3 id="top_user_years_more_than_four_games"><code>top_user_years_more_than_four_games</code><a class="anchorjs-link " href="https://kproudler.github.io/golden_age_videogames.html#top_user_years_more_than_four_games" aria-label="Anchor" data-anchorjs-icon="" style="font: 1em / 1 anchorjs-icons; padding-left: 0.375em;"></a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">column</th>
+<th>type</th>
+<th>meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;"><code>year</code></td>
+<td>int</td>
+<td>Year of video game release</td>
+</tr>
+<tr>
+<td style="text-align:left;"><code>num_games</code></td>
+<td>int</td>
+<td>Count of the number of video games released in that year</td>
+</tr>
+<tr>
+<td style="text-align:left;"><code>avg_user_score</code></td>
+<td>float</td>
+<td>Average of all user scores for games released in that year</td>
+</tr>
+</tbody>
+</table>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">%%</span><span class="k">sql</span> 
+
+<span class="c1">-- Select the year results that appear on both tables</span>
+<span class="k">SELECT</span> <span class="nb">year</span>
+<span class="k">FROM</span> <span class="n">top_critic_years_more_than_four_games</span>
+<span class="k">INTERSECT</span>
+<span class="k">SELECT</span> <span class="nb">year</span>
+<span class="k">FROM</span> <span class="n">top_user_years_more_than_four_games</span><span class="p">;</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> * postgresql:///games
+3 rows affected.
+</code></pre></div></div>
+
+<table>
+    <thead>
+        <tr>
+            <th>year</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1998</td>
+        </tr>
+        <tr>
+            <td>2008</td>
+        </tr>
+        <tr>
+            <td>2002</td>
+        </tr>
+    </tbody>
+</table>
+
+<h2 id="8-sales-in-the-best-video-game-years">8. Sales in the best video game years<a class="anchorjs-link " href="https://kproudler.github.io/golden_age_videogames.html#8-sales-in-the-best-video-game-years" aria-label="Anchor" data-anchorjs-icon="" style="font: 1em / 1 anchorjs-icons; padding-left: 0.375em;"></a></h2>
+<p>Looks like we've got three years that both users and critics agreed were in the top ten! There are many other ways of measuring what the best years for video games are, but let's stick with these years for now. We know that critics and players liked these years, but what about video game makers? Were sales good? Let's find out.</p>
+<p>This time, we haven't saved the results from the previous task in a table for you. Instead, we'll use the query from the previous task as a subquery in this one! This is a great skill to have, as we don't always have write permissions on the database we are querying.</p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">%%</span><span class="k">sql</span> 
+
+<span class="c1">-- Select year and sum of games_sold, aliased as total_games_sold; order results by total_games_sold descending</span>
+<span class="c1">-- Filter game_sales based on whether each year is in the list returned in the previous task</span>
+<span class="k">SELECT</span> <span class="nb">year</span><span class="p">,</span> <span class="k">SUM</span><span class="p">(</span><span class="n">games_sold</span><span class="p">)</span> <span class="k">AS</span> <span class="n">total_games_sold</span>
+<span class="k">FROM</span> <span class="n">game_sales</span> <span class="k">AS</span> <span class="k">g</span>
+<span class="k">WHERE</span> <span class="nb">year</span> <span class="k">IN</span> <span class="p">(</span>
+    <span class="k">SELECT</span> <span class="nb">year</span>
+    <span class="k">FROM</span> <span class="n">top_critic_years_more_than_four_games</span>
+    <span class="k">INTERSECT</span>
+    <span class="k">SELECT</span> <span class="nb">year</span>
+    <span class="k">FROM</span> <span class="n">top_user_years_more_than_four_games</span>
+<span class="p">)</span>
+<span class="k">GROUP</span> <span class="k">BY</span> <span class="k">g</span><span class="p">.</span><span class="nb">year</span>
+<span class="k">ORDER</span> <span class="k">BY</span> <span class="n">total_games_sold</span> <span class="k">DESC</span><span class="p">;</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> * postgresql:///games
+3 rows affected.
+</code></pre></div></div>
+
+<table>
+    <thead>
+        <tr>
+            <th>year</th>
+            <th>total_games_sold</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>2008</td>
+            <td>175.07</td>
+        </tr>
+        <tr>
+            <td>1998</td>
+            <td>101.52</td>
+        </tr>
+        <tr>
+            <td>2002</td>
+            <td>58.67</td>
+        </tr>
+    </tbody>
+</table>
+
+
+
+      
+      <div class="footer border-top border-gray-light mt-5 pt-3 text-right text-gray">
+        This site is open source. <a href="https://github.com/kproudler/kproudler.github.io/edit/main/golden_age_videogames.md">Improve this page</a>.
+      </div>
+      
+    </div>
+    <script src="./golden_age_videogames_files/anchor.min.js.download" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  
+
+</body><grammarly-desktop-integration data-grammarly-shadow-root="true"><template shadowrootmode="open"><style>
+      div.grammarly-desktop-integration {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select:none;
+        user-select:none;
+      }
+
+      div.grammarly-desktop-integration:before {
+        content: attr(data-content);
+      }
+    </style><div aria-label="grammarly-integration" role="group" tabindex="-1" class="grammarly-desktop-integration" data-content="{&quot;mode&quot;:&quot;full&quot;,&quot;isActive&quot;:true,&quot;isUserDisabled&quot;:false}"></div></template></grammarly-desktop-integration></html>
